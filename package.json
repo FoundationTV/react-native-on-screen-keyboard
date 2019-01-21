@@ -2,12 +2,14 @@
   "name": "react-native-on-screen-keyboard",
   "version": "1.0.0",
   "description": "On Screen Keyboard for React Native",
-  "main": "index.js",
-  "directories": {
-    "example": "example"
-  },
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JunctionTV/react-native-on-screen-keyboard.git"
   },
   "keywords": [
     "react",
@@ -16,5 +18,22 @@
     "keyboard"
   ],
   "author": "Mohammed Khateeb Kamran",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JunctionTV/react-native-on-screen-keyboard/issues"
+  },
+  "homepage": "https://github.com/JunctionTV/react-native-on-screen-keyboard#readme",
+  "dependencies": {
+    "react": "^16.7.0",
+    "react-native": "0.57.8"
+  },
+  "devDependencies": {
+    "babel-jest": "23.6.0",
+    "jest": "23.6.0",
+    "metro-react-native-babel-preset": "0.51.1",
+    "react-test-renderer": "^16.7.0"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
 }
