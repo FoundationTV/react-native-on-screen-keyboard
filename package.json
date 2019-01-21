@@ -1,0 +1,20 @@
+{
+  "name": "react-native-on-screen-keyboard",
+  "version": "1.0.0",
+  "description": "On Screen Keyboard for React Native",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "native",
+    "onscreen",
+    "keyboard"
+  ],
+  "author": "Mohammed Khateeb Kamran",
+  "license": "MIT"
+}
