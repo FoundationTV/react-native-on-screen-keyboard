@@ -1,5 +1,5 @@
 {
-  "name": "react-native-on-screen-keyboard",
+  "name": "@junctiontv/react-native-on-screen-keyboard",
   "version": "1.0.0",
   "description": "On Screen Keyboard for React Native",
   "main": "src/index.js",
