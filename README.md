@@ -39,17 +39,20 @@ import Keyboard from "@junctiontv/react-native-on-screen-keyboard";
   keyboardButtonPressStyle={styles.keyboardButtonPress}
 />
 ```
-- **`title`** _(String)_ - _(optional)_ - sets the title of the keyboard
-- **`title`** _(React Ref)_ - the reference of the `TextInput` which is to be attached
-- **`onInput`** _(String)_ - callback to set the value of the text from the keyboard
-- **`inputType`** _(Function)_ - sets the input type of the keyboard. Currently only `textEmailAddress` and `textPassword` are supported
-- **`keyboardContainerStyle`** _(Object)_ - _(optional)_ - style to set the style for the keyboard container
-- **`keyboardTitleStyle`** _(Object)_ - _(optional)_ - style to set the style for the keyboard title
-- **`keyboardButtonContainerStyle`** _(Object)_ - _(optional)_ - style to set the style for the keyboard buttons container
-- **`keyboardButtonTextStyle`** _(Object)_ - _(optional)_ - style to set the style for the keyboard buttons text in unpressed state
-- **`keyboardButtonTextPressStyle`** _(Object)_ - _(optional)_ - style to set the style for the keyboard buttons text in pressed state
-- **`keyboardButtonStyle`** _(Object)_ - _(optional)_ - style to set the style for the keyboard buttons in unpressed state
-- **`keyboardButtonPressStyle`** _(Object)_ - _(optional)_ - style to set the style for the keyboard buttons in pressed state
+
+Prop | Type | Optional | Description
+------------ | ------------- | ---- | ----
+**`title`** | _String_ | :heavy_check_mark: | sets the title of the keyboard
+**`textInput`** | _React Ref_ | :x: | the reference of the `TextInput` which is to be attached
+**`onInput`** | _Function_ | :x: | callback to set the value of the text from the keyboard
+**`inputType`** | _String_ | :x: | sets the input type of the keyboard. Currently only `textEmailAddress` and `textPassword` are supported
+**`keyboardContainerStyle`** | _Object_ | :heavy_check_mark: | style to set the style for the keyboard container
+**`keyboardTitleStyle`** | _Object_ | :heavy_check_mark: | style to set the style for the keyboard title
+**`keyboardButtonContainerStyle`** | _Object_ | :heavy_check_mark: | style to set the style for the keyboard buttons container
+**`keyboardButtonTextStyle`** | _Object_ | :heavy_check_mark: | style to set the style for the keyboard buttons text in unpressed state
+**`keyboardButtonTextPressStyle`** | _Object_ | :heavy_check_mark: | style to set the style for the keyboard buttons text in pressed state
+**`keyboardButtonStyle`** | _Object_ | :heavy_check_mark: | style to set the style for the keyboard buttons in unpressed state
+**`keyboardButtonPressStyle`** | _Object_ | :heavy_check_mark: | style to set the style for the keyboard buttons in pressed state
 
 ## Contributing
 All contributions including new features, requests, bug fixes are open to everyone. Feel free to open a PR!
