@@ -55,6 +55,15 @@ class KeyboardButton extends Component<Props> {
       newStyle = { width: styles.container.width * 3.1 };
     else if (this.props.width === 4)
       newStyle = { width: styles.container.width * 4.15 };
+    let tintColor;
+    if (keyboardButtonTextPressStyle && keyboardButtonTextStyle)
+      tintColor = this.state.isFocused
+        ? keyboardButtonTextPressStyle.color
+        : keyboardButtonTextStyle.color;
+    else
+      tintColor = this.state.isFocused
+        ? styles.textPress.color
+        : styles.text.color;
     return (
       <View style={[styles.container, keyboardButtonContainerStyle, newStyle]}>
         <TouchableHighlight
@@ -73,11 +82,7 @@ class KeyboardButton extends Component<Props> {
             <Image
               style={{ marginLeft: 13 }}
               resizeMode="center"
-              tintColor={
-                this.state.isFocused
-                  ? keyboardButtonTextPressStyle.color
-                  : keyboardButtonTextStyle.color
-              }
+              tintColor={tintColor}
               source={this.images[this.props.image]}
             />
           ) : (
