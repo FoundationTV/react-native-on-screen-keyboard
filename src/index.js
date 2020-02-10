@@ -21,11 +21,13 @@ class Keyboard extends Component<Props> {
       emailSpecialIndices: [0, 6, 7, 8, 4, 5],
       passswordNormalIndices: [0, 1, 2, 3, 9],
       passswordSpecialIndices: [6, 10, 11, 12, 9],
-      passswordAccentIndices: [0, 13, 14, 15, 9]
+      passswordAccentIndices: [0, 13, 14, 15, 9],
+      searchIndices: [16, 17, 18, 19, 20, 21, 22]
     };
     let initialIndices = {
       textEmailAddress: this.allIndices.emailNormalIndices,
-      textPassword: this.allIndices.passswordNormalIndices
+      textPassword: this.allIndices.passswordNormalIndices,
+      textSearch:this.allIndices.searchIndices,
     };
     this.state = {
       indices: initialIndices[props.inputType],
@@ -43,11 +45,15 @@ class Keyboard extends Component<Props> {
       emailSpecialIndices,
       passswordNormalIndices,
       passswordSpecialIndices,
-      passswordAccentIndices
+      passswordAccentIndices,
+      searchIndices,
     } = this.allIndices;
     switch (char) {
       case "backspace":
         onInput(textInput.current.props.value.slice(0, -1));
+        break;
+      case "spacebar":
+        onInput(textInput.current.props.value + ' ');
         break;
       case "shift":
         this.setState({ isCaps: !isCaps });
@@ -86,16 +92,14 @@ class Keyboard extends Component<Props> {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    const { emailNormalIndices, passswordNormalIndices } = this.allIndices;
-    if (this.props.inputType !== nextProps.inputType)
-      this.setState({
-        isSpecial: false,
-        isAccent: false,
-        indices:
-          nextProps.inputType === "textPassword"
-            ? passswordNormalIndices
-            : emailNormalIndices
-      });
+    const { emailNormalIndices, passswordNormalIndices,searchIndices } = this.allIndices;
+    if (this.props.inputType !== nextProps.inputType) {
+      let index = '';
+      if (nextProps.inputType === "textPassword") index = passswordNormalIndices;
+      else if (nextProps.inputType === "textEmailAddress") index = emailNormalIndices;
+      else if (nextProps.inputType === "textSearch") index = searchIndices;
+      this.setState({ isSpecial: false, isAccent: false, indices: index });
+    }
     return true;
   }
 
@@ -108,7 +112,8 @@ class Keyboard extends Component<Props> {
       keyboardButtonTextStyle,
       keyboardButtonTextPressStyle,
       keyboardButtonStyle,
-      keyboardButtonPressStyle
+      keyboardButtonPressStyle,
+      keyboardButtonWidthMultiplier,
     } = this.props;
     const { indices, isSpecial, isAccent, isCaps } = this.state;
     return (
@@ -142,6 +147,7 @@ class Keyboard extends Component<Props> {
                   keyboardButtonTextPressStyle={keyboardButtonTextPressStyle}
                   keyboardButtonStyle={keyboardButtonStyle}
                   keyboardButtonPressStyle={keyboardButtonPressStyle}
+                  keyboardButtonWidthMultiplier = {keyboardButtonWidthMultiplier}
                 />
               );
             })}

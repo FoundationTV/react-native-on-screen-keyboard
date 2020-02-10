@@ -9,7 +9,7 @@ import {
   StyleSheet,
   View,
   Text,
-  TouchableHighlight
+  TouchableOpacity
 } from "react-native";
 
 class KeyboardButton extends Component<Props> {
@@ -46,15 +46,25 @@ class KeyboardButton extends Component<Props> {
       keyboardButtonTextStyle,
       keyboardButtonTextPressStyle,
       keyboardButtonStyle,
-      keyboardButtonPressStyle
+      keyboardButtonPressStyle,
+      keyboardButtonWidthMultiplier
     } = this.props;
     let newStyle = {};
     if (this.props.width === 2)
-      newStyle = { width: styles.container.width * 2.05 };
+      if (keyboardButtonWidthMultiplier && keyboardButtonWidthMultiplier["2"])
+        newStyle = { width: styles.container.width * keyboardButtonWidthMultiplier["2"] };
+      else
+        newStyle = {width: styles.container.width * 2.05};
     else if (this.props.width === 3)
-      newStyle = { width: styles.container.width * 3.1 };
+      if (keyboardButtonWidthMultiplier && keyboardButtonWidthMultiplier["3"])
+        newStyle = { width: styles.container.width * keyboardButtonWidthMultiplier["3"] };
+     else
+        newStyle = { width: styles.container.width * 3.1};
     else if (this.props.width === 4)
-      newStyle = { width: styles.container.width * 4.15 };
+      if (keyboardButtonWidthMultiplier && keyboardButtonWidthMultiplier["4"])
+        newStyle = { width: styles.container.width * keyboardButtonWidthMultiplier["4"] };
+      else
+        newStyle = { width: styles.container.width * 4.15};
     let tintColor;
     if (keyboardButtonTextPressStyle && keyboardButtonTextStyle)
       tintColor = this.state.isFocused
@@ -64,19 +74,22 @@ class KeyboardButton extends Component<Props> {
       tintColor = this.state.isFocused
         ? styles.textPress.color
         : styles.text.color;
+
     return (
       <View style={[styles.container, keyboardButtonContainerStyle, newStyle]}>
-        <TouchableHighlight
+        <TouchableOpacity
           style={[
             this.state.isFocused ? styles.buttonPress : styles.button,
             this.state.isFocused
               ? keyboardButtonPressStyle
               : keyboardButtonStyle,
-            newStyle
+            newStyle,
           ]}
           onPress={this.onPress}
           onBlur={this.onBlur}
           onFocus={this.onFocus}
+          disabled={true}
+          activeOpacity={1}
         >
           {this.props.image ? (
             <Image
@@ -99,7 +112,7 @@ class KeyboardButton extends Component<Props> {
                 : this.props.text}
             </Text>
           )}
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
     );
   }
